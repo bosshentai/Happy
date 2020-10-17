@@ -14,22 +14,38 @@ L.tileLayer(
 
 //create icon
 const icon = L.icon({
-    iconUrl: "./public/images/map-marker.svg",
+    iconUrl: "/images/map-marker.svg",
     iconSize: [58,68],
     iconAnchor: [2,68],
     popupAnchor: [170,2]
 
 });
 
+function addMarker({id, name, lat, lng }){
 // create popup overlay title
 const popup = L.popup({
     closeButton: false,
     className: 'map-popup',
     minWidth: 240,
     minHeight: 240
-}).setContent('Lar das meninas <a href="orphanage.html?id=1" class="choose-orphanage"> <img src="./public/images/arrow-white.svg"> </a>');
+}).setContent(`${name} <a href="/orphanage?id=${id}" class="choose-orphanage"> <img src="/images/arrow-white.svg"> </a>`);
 
-
-L.marker([-27.2151682, -49.642853],{ icon})
+// create and add marker
+L.marker([lat, lng],{ icon })
 .addTo(mymap)
 .bindPopup(popup);
+}
+
+const orphanagesSpan = document.querySelectorAll('.orphanages span')
+
+
+orphanagesSpan.forEach( orphanagesElement => {
+    const orphanage = {
+        id: orphanagesElement.dataset.id,
+        name: orphanagesElement.dataset.name,
+        lat: orphanagesElement.dataset.lat,
+        lng: orphanagesElement.dataset.lng
+    }
+
+    addMarker(orphanage)
+})
