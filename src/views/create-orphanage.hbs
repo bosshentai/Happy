@@ -39,7 +39,7 @@
             </footer>
         </aside>
         <main class="animate-appear with-sidebar">
-            <form action="">
+            <form action="" method="post" onsubmit="validate(event)"
                 <fieldset>
                     <legend>Dados</legend>
 
@@ -73,7 +73,7 @@
                         <label for="images">Foto</label>
                         <div class="image-upload" id="images">
                             <div class="new-upload">
-                                <input type="text " name="images" placeholder="Cole o link da foto aqui" required/>
+                                <input type="text " name="images" placeholder="Cole o link da foto aqui" required type="url"/>
                                 <span onclick="deleteField(event)"><img src="/images/remove-file.svg" alt="Remover Foto" /></span>
                             </div>
                         </div>

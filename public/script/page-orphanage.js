@@ -11,8 +11,13 @@ const options = {
     zoomControl: false
 }
 
+
+const lat = document.querySelector('span[data-lat]').dataset.lat
+const lng = document.querySelector('span[data-lng]').dataset.lng
 //create map
-const mymap = L.map("mapid", options).setView([-27.2151682, -49.642853], 15);
+
+
+const mymap = L.map("mapid", options).setView([lat, lng], 15);
 
 //create and add title layer
 L.tileLayer(
@@ -30,9 +35,10 @@ const icon = L.icon({
 });
 
 
+// create and add marker
 
 
-L.marker([-27.2151682, -49.642853], {
+L.marker([lat, lng], {
         icon
     })
     .addTo(mymap);
@@ -49,7 +55,7 @@ function selectImage(event) {
     buttons.forEach(removeActiveClass)
 
 
-    function removeActiveClass(button){
+    function removeActiveClass(button) {
         button.classList.remove(".active")
     }
 

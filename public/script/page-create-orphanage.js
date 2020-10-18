@@ -101,3 +101,12 @@ function toogleSelect (event){
     input.value = button.dataset.value 
     
 }
+
+function validade(event){
+    // validat se lat e lng estao preenchido
+    const needsLatAndLng = false;
+    if(needsLatAndLng){
+    event.preventDefault()
+    alert('Seleciona o ponto no mapa')
+    }
+}
